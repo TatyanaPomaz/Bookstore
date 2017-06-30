@@ -17,7 +17,7 @@ import java.util.Set;
 @Table(name = "book")
 public class Book {
     @Id
-    @Column(name = "id")
+    @Column(name = "book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
@@ -31,13 +31,13 @@ public class Book {
     private double price;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "book_genre", joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+    @JoinTable(name = "book_genre", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private Set<Genre> genres;
 
     public long getId() {

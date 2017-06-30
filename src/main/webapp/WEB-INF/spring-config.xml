@@ -32,23 +32,42 @@
         <property name="annotatedClasses">
             <list>
                 <value>bookstore.model.Book</value>
+                <value>bookstore.model.Author</value>
+                <value>bookstore.model.Genre</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hbm2ddl.auto">update</prop>
             </props>
         </property>
     </bean>
 
-    <!--BookDAO and BookService beans-->
+    <!--dao and service beans-->
     <bean id="bookDAO" class="bookstore.dao.BookDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="authorDAO" class="bookstore.dao.AuthorDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="genreDAO" class="bookstore.dao.GenreDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <bean id="bookService" class="bookstore.service.BookServiceImpl">
         <property name="bookDAO" ref="bookDAO"/>
+    </bean>
+
+    <bean id="authorService" class="bookstore.service.AuthorServiceImpl">
+        <property name="authorDAO" ref="authorDAO"/>
+    </bean>
+
+    <bean id="genreService" class="bookstore.service.GenreServiceImpl">
+        <property name="genreDAO" ref="genreDAO"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
