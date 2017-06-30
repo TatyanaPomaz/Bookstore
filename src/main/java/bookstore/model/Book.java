@@ -27,6 +27,11 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "id"))
     private Set<Author> authors;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "book_genre", joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id"))
+    private Set<Genre> genres;
+
     public long getId() {
         return id;
     }
@@ -67,6 +72,14 @@ public class Book {
         this.authors = authors;
     }
 
+    public Set<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -75,6 +88,7 @@ public class Book {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", authors=" + authors +
+                ", genres=" + genres +
                 '}';
     }
 }
