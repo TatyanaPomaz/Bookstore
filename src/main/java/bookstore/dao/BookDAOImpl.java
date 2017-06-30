@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -57,7 +58,7 @@ public class BookDAOImpl implements BookDAO {
     @SuppressWarnings("unchecked")
     public List<Book> getAllBooks() {
         Session currentSession = sessionFactory.getCurrentSession();
-        List<Book> bookList = currentSession.createQuery("from Books").list();
+        List<Book> bookList = currentSession.createQuery("from Book").list();
 
         for (Book book : bookList) {
             logger.info("Book list : " + book);
