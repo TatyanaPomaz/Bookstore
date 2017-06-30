@@ -1,11 +1,13 @@
 package bookstore.model;
 
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
 public class Book {
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +21,11 @@ public class Book {
 
     @Column(name = "price")
     private double price;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="book_author", joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id"))
+    private Set<Author> authors;
 
     public long getId() {
         return id;
@@ -52,6 +59,14 @@ public class Book {
         this.price = price;
     }
 
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -59,6 +74,7 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", authors=" + authors +
                 '}';
     }
 }
