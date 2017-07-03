@@ -9,7 +9,7 @@
 
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="javascript.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
 
     <style type="text/css">
         .tg {
@@ -70,7 +70,7 @@
     <c:forEach items="${listBooks}" var="book">
         <tr>
             <td>${book.id}</td>
-            <td><a href="/bookdata/${book.id}" target="_blank">${book.title}</a>></td>
+            <td><a href="/bookdata/${book.id}" target="_blank">${book.title}</a></td>
             <td>${book.description}</td>
             <td>${book.price}</td>
             <td><a href="<c:url value='/edit/${book.id}'/>">Edit</a></td>
@@ -89,7 +89,6 @@
         <h2>Add a Book</h2>
     </div>
     <div class="bottom">
-        <%--<c:url var="addAction" value="/books/add">--%>
         <form:form action="books/add" commandName="book">
             <table>
                 <tr>
@@ -138,9 +137,12 @@
             <button type="submit" h>OK</button>
             <button type="reset">Cancel</button>
         </form:form>
-        <%--</c:url>--%>
     </div>
 </div>
+
+<br/>
+<a href="<c:url value="/genres"/>" target="_blank">Genres list</a>
+<br/>
 
 </body>
 </html>
