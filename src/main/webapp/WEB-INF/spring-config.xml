@@ -9,7 +9,6 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-            http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
             http://www.springframework.org/schema/tx
             http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
@@ -41,34 +40,41 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hbm2ddl.auto">update</prop>
-                <!--<prop key="hibernate.id.new_generator_mappings">false</prop>-->
             </props>
         </property>
     </bean>
 
     <!--dao and service beans-->
-    <bean id="bookDAO" class="bookstore.dao.BookDAOImpl">
+    <bean id="bookDAO" class="bookstore.dao.impl.BookDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="authorDAO" class="bookstore.dao.AuthorDAOImpl">
+    <bean id="authorDAO" class="bookstore.dao.impl.AuthorDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="genreDAO" class="bookstore.dao.GenreDAOImpl">
+    <bean id="genreDAO" class="bookstore.dao.impl.GenreDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="bookService" class="bookstore.service.BookServiceImpl">
+    <bean id="orderDAO" class="bookstore.dao.impl.OrderDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="bookService" class="bookstore.service.impl.BookServiceImpl">
         <property name="bookDAO" ref="bookDAO"/>
     </bean>
 
-    <bean id="authorService" class="bookstore.service.AuthorServiceImpl">
+    <bean id="authorService" class="bookstore.service.impl.AuthorServiceImpl">
         <property name="authorDAO" ref="authorDAO"/>
     </bean>
 
-    <bean id="genreService" class="bookstore.service.GenreServiceImpl">
+    <bean id="genreService" class="bookstore.service.impl.GenreServiceImpl">
         <property name="genreDAO" ref="genreDAO"/>
+    </bean>
+
+    <bean id="orderService" class="bookstore.service.impl.OrderServiceImpl">
+        <property name="orderDAO" ref="orderDAO"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
@@ -79,9 +85,7 @@
     <context:component-scan base-package="bookstore"/>
 
     <mvc:annotation-driven/>
-
     <mvc:default-servlet-handler/>
-    <!--<mvc:annotation-driven/>-->
 
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
 

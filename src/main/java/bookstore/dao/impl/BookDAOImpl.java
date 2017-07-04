@@ -1,11 +1,11 @@
-package bookstore.dao;
+package bookstore.dao.impl;
 
+import bookstore.dao.BookDAO;
 import bookstore.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

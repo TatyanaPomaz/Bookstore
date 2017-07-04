@@ -1,7 +1,8 @@
-package bookstore.dao;
+package bookstore.dao.impl;
 
+import bookstore.dao.OrderDAO;
+import bookstore.dao.impl.BookDAOImpl;
 import bookstore.model.Order;
-import bookstore.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

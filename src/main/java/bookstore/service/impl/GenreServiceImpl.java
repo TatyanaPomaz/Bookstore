@@ -1,11 +1,14 @@
-package bookstore.service;
+package bookstore.service.impl;
 
 import bookstore.dao.GenreDAO;
 import bookstore.model.Genre;
+import bookstore.service.GenreService;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class GenreServiceImpl implements GenreService {
 
     private GenreDAO genreDAO;

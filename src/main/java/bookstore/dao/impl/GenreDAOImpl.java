@@ -1,5 +1,7 @@
-package bookstore.dao;
+package bookstore.dao.impl;
 
+import bookstore.dao.GenreDAO;
+import bookstore.dao.impl.BookDAOImpl;
 import bookstore.model.Genre;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

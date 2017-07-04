@@ -1,12 +1,15 @@
-package bookstore.service;
+package bookstore.service.impl;
 
 import bookstore.dao.AuthorDAO;
 import bookstore.model.Author;
+import bookstore.service.AuthorService;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public class AuthorServiceImpl implements AuthorService{
+@Service
+public class AuthorServiceImpl implements AuthorService {
 
     private AuthorDAO authorDAO;
 

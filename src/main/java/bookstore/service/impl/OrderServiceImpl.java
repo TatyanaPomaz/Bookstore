@@ -1,11 +1,14 @@
-package bookstore.service;
+package bookstore.service.impl;
 
 import bookstore.dao.OrderDAO;
 import bookstore.model.Order;
 import bookstore.model.User;
+import bookstore.service.OrderService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements OrderService {
     private OrderDAO orderDAO;
 
