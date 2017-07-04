@@ -8,7 +8,7 @@
 <head>
     <title>Genre page</title>
 
-    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <%--<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>--%>
     <%--<script type="text/javascript" src="<c:url value="js/javascript.js"/>"></script>--%>
     <link href="<c:url value="/css/style.css"/>" rel="stylesheet" type="text/css"/>
 
