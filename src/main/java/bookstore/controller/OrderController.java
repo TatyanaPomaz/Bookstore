@@ -40,14 +40,14 @@ public class OrderController {
         return "redirect:/orders";
     }
 
-    @RequestMapping("/remove/{id}")
+    @RequestMapping("/removeorder/{id}")
     public String removeBook(@PathVariable("id") long id) {
         orderService.removeOrder(id);
 
         return "redirect:/orders";
     }
 
-    @RequestMapping("/{userId}/edit/{id}")
+    @RequestMapping("/{userId}/editorder/{id}")
     public String editOrder(@PathVariable("id") long id, @PathVariable("userId") long userId, Model model) {
         model.addAttribute("order", orderService.getOrderById(id));
         model.addAttribute("listOrders", orderService.getAllOrdersByUserId(userId));

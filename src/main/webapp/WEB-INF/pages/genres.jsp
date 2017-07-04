@@ -7,9 +7,6 @@
 <html>
 <head>
     <title>Genre page</title>
-
-    <%--<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>--%>
-    <%--<script type="text/javascript" src="<c:url value="js/javascript.js"/>"></script>--%>
     <link href="<c:url value="/css/style.css"/>" rel="stylesheet" type="text/css"/>
 
 </head>
@@ -41,17 +38,10 @@
     <h1>Add a Genre</h1>
 </c:if>
 
-<%--<a class="popup-link-1" href="">Add a Genre</a>--%>
 
 <c:url var="addAction" value="/genres/add"/>
 
 <form:form action="${addAction}" commandName="genre">
-    <%--<div class="popup-box" id="popup-box-1">--%>
-    <%--<div class="close">X</div>--%>
-    <%--<div class="top">--%>
-    <%--<h2>Add a Genre</h2>--%>
-    <%--</div>--%>
-    <%--<div class="bottom">--%>
     <table>
         <tr>
             <td>
@@ -75,8 +65,6 @@
     <br/>
     <input type="submit" value="<spring:message text= "Submit"/>"/>
     <input type="reset" value="<spring:message text= "Cancel"/>"/>
-    <%--</div>--%>
-    <%--</div>--%>
 </form:form>
 
 </body>

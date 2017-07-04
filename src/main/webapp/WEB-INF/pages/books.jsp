@@ -77,37 +77,21 @@
                 <form:input path="description"/>
             </td>
         </tr>
-        <tr>
-            <td>
-                <form:label path="genres">
-                    <spring:message text="Genre"/>
-                </form:label>
-            </td>
-            <td>
-                <table>
-                    <c:if test="${!empty book.title}">
-                        <c:forEach items="${genres}" var="genre">
-                            <tr>${genre}</tr>
-                        </c:forEach>
-                    </c:if>
-                    <c:if test="${empty book.title}">
-                        <%--<table class="table-scroll">--%>
-                            <%--<c:forEach items="${listGenres}" var="genre">--%>
-                                <form:checkboxes path="genres" items="${listGenres}"/>
-                                <br/>
-                                <%--<tr>--%>
-                                    <%--<td>--%>
-                                        <%--<input type="checkbox">--%>
-                                            <%--${genre.name}--%>
-                                        <%--</input>--%>
-                                    <%--</td>--%>
-                                <%--</tr>--%>
-                            <%--</c:forEach>--%>
-                        <%--</table>--%>
-                    </c:if>
-                </table>
-            </td>
-        </tr>
+        <%--<tr>--%>
+            <%--<td>--%>
+                <%--<form:label path="genres">--%>
+                    <%--<spring:message text="Genre"/>--%>
+                <%--</form:label>--%>
+            <%--</td>--%>
+            <%--<td>--%>
+                <%--<table>--%>
+                    <%--<c:if test="${empty book.title}">--%>
+                        <%--<form:checkboxes path="genres" items="${listGenres}"/>--%>
+                        <%--<br/>--%>
+                    <%--</c:if>--%>
+                <%--</table>--%>
+            <%--</td>--%>
+        <%--</tr>--%>
         <tr>
             <td>
                 <form:label path="price">
@@ -123,7 +107,6 @@
     <br/>
     <br/>
     <input type="submit" value="<spring:message text= "Submit"/>"/>
-    <%--<input type="button"  value="<spring:message text= "Cancel"/>"/>--%>
     <button type="reset">Cancel</button>
 </form:form>
 
