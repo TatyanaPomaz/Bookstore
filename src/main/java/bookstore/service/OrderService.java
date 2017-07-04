@@ -1,11 +1,11 @@
-package bookstore.dao;
+package bookstore.service;
 
 import bookstore.model.Order;
 import bookstore.model.User;
 
 import java.util.List;
 
-public interface OrderDAO {
+public interface OrderService {
     void addOrder(Order order);
 
     void updateOrder(Order order);

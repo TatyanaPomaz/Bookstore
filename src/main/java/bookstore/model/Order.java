@@ -4,12 +4,14 @@ package bookstore.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Set;
 
@@ -21,17 +23,18 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "customer_first_name")
-    private String customerFirstName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private long userId;
 
-    @Column(name = "customer_second_name")
-    private String customerSecondName;
-
-    @Column(name = "customer_address")
-    private String customerAddress;
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "quantity")
     private int quantity;
+
+    @Column(name = "state")
+    private int state;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "book_order", joinColumns = @JoinColumn(name = "order_id"),
@@ -46,28 +49,20 @@ public class Order {
         this.id = id;
     }
 
-    public String getCustomerFirstName() {
-        return customerFirstName;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setCustomerFirstName(String customerFirstName) {
-        this.customerFirstName = customerFirstName;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public String getCustomerSecondName() {
-        return customerSecondName;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCustomerSecondName(String customerSecondName) {
-        this.customerSecondName = customerSecondName;
-    }
-
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getQuantity() {
@@ -76,6 +71,14 @@ public class Order {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public Set<Book> getBooks() {
@@ -90,10 +93,10 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", customerFirstName='" + customerFirstName + '\'' +
-                ", customerSecondName='" + customerSecondName + '\'' +
-                ", customerAddress='" + customerAddress + '\'' +
+                ", userId=" + userId +
+                ", address='" + address + '\'' +
                 ", quantity=" + quantity +
+                ", state=" + state +
                 ", books=" + books +
                 '}';
     }

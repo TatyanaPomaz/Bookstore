@@ -1,10 +1,14 @@
 package bookstore.dao;
 
 import bookstore.model.Order;
+import bookstore.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class OrderDAOImpl implements OrderDAO {
     private static final Logger logger = LoggerFactory.getLogger(BookDAOImpl.class);
@@ -48,4 +52,21 @@ public class OrderDAOImpl implements OrderDAO {
 
         return order;
     }
+
+    @Override
+    public List<Order> getAllOrdersByUserId(long userId) {
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        Query query = currentSession.createQuery("from Order where user_id = :userId");
+        query.setParameter("userId", userId);
+        List<Order> orderList = query.list();
+
+        for (Order order : orderList) {
+            logger.info("Order list : " + order);
+        }
+
+        return orderList;
+    }
+
+
 }
